@@ -1,26 +1,26 @@
-jqDnR-touch - Minimalistic Drag'n'Resize for jQuery
+# jqDnR-touch-callback
+### Minimalistic Drag'n'Resize for jQuery with callback functionality
 ===================================================
 
-based on [jqDnR](http://dev.iceburg.net/jquery/jqDnR/) &copy; 2007 Brice Burgess &lt;bhb@iceburg.net&gt;
+Forked from [gaarf](http://github.com/gaarf/jqDnR-touch) which was based on [jqDnR](http://dev.iceburg.net/jquery/jqDnR/) &copy; 2007 Brice Burgess &lt;bhb@iceburg.net&gt;
 
 Licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
-#### This version was heavily modified by [@gaarf](http://gaarf.info) for:
-
- * jQuery 1.4 support
- * touch events (works on iOS devices)
- * z-index upping
- * legibility
+#### This version was slightly modified by @dylan-hepworth to provide a callback once the drag event has completed and the mouse has been released.
 
 #### Usage:
 
 if box is a DOM node that should be draggable:
 
-    $(box).jqDrag();
+```js
+$(box).jqDrag();
+```
 
 if box is a DOM node that should be both draggable and resizable:
 
-    $(box).jqDrag(moveHandle).jqResize(resizeHandle);
+```js
+$(box).jqDrag(moveHandle).jqResize(resizeHandle);
+```
 
 where moveHandle/resizeHandle are optional DOM elements. if not defined, the whole box will be used as handle.
   
@@ -30,3 +30,11 @@ where moveHandle/resizeHandle are optional DOM elements. if not defined, the who
  * `jqDnRend`  drag/resize operation ends
  * `jqDnRtop`  element brought to top (via click or touch) without drag
 
+## Providing a Callback Function
+```js
+var myCallback = function() {
+    alert("Done dragging!");
+}
+
+$(box).jqDrag(null, myCallback);
+```
